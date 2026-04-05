@@ -1,1 +1,1 @@
-# 1-Semestre
+Bem Basicamente é meu aprendizado no primeiro semestre de Sistema de Informação (2026), no IFSudeste MG, não sou tão ativo aqui pelo motivo de fazer a maioria das questões em sala de aula pela questão do contato com professor.
