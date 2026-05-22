@@ -1,0 +1,261 @@
+@import url("reset.css");
+
+body{
+    background: linear-gradient(
+    90deg,
+    #0BE666 0%,
+    #EDDD53 50%,
+    #0C26EB 100%);
+    border-radius: 50px;
+    min-height: 100vh;
+}
+
+header{
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1{
+   background: linear-gradient(
+    90deg,
+    #0BE666 0%,
+    #EDDD53 50%,
+    #0C26EB 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+
+.cbf{
+    width: 50px;
+    padding-left: 40px;
+}
+
+.bandeira{
+    width: 70px;
+    padding-right: 40px;
+}
+
+.navbar{
+    width: fit-content;
+    margin: 0 auto 30px auto;
+    padding: 15px 35px;
+    background: white;
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    display: flex;
+    gap: 30px;
+    position: relative;
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.25);
+}
+
+.navbar a{
+    background: linear-gradient(
+    90deg,
+    rgba(29, 67, 207, 1) 0%, rgba(91, 237, 83, 1) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.navbar a:hover{
+    color: white;
+    transform: translateY(-2px);
+}
+
+.boxes{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 60px;
+    padding: 50px;
+    text-align: center;
+}
+
+
+.boxesquerda{
+    max-width: 700px;
+    background: white;
+    border-radius: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 65px
+}
+
+.boxdireita{
+    max-width: 420px;
+    background:white;
+    border-radius: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 40px
+}
+
+h2{
+    background: linear-gradient(
+    90deg,
+    rgba(29, 67, 207, 1) 0%, rgba(91, 237, 83, 1) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-top: 20px;
+    font-size: 40px;
+}
+
+.noticia1{
+    border: 1px solid white;
+    border-radius: 15px;
+    background: linear-gradient(
+    90deg,
+    rgba(29, 67, 207, 1) 0%, rgba(91, 237, 83, 1) 100%);
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    transition: 0.3s;
+}
+
+.noticia1:hover{
+    transform: scale(1.03);
+}
+
+.noticia{
+    padding-bottom: 30px;
+    font-size: 30px;
+    color: white;
+}
+
+.not1{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.jogo{
+    width: 340px;
+    padding: 20px;
+
+    background: linear-gradient(
+        95deg,
+        rgba(29, 67, 207, 1) 0%, rgba(91, 237, 83, 1) 100%);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    box-shadow:
+        0 10px 25px rgba(0,0,0,0.35);
+    transition: 0.3s;
+}
+
+.jogo:hover{
+    transform: scale(1.03);
+}
+
+.pjogos{
+    padding-top: 40px;
+    padding-bottom: 20px;
+    background: linear-gradient(
+    90deg,
+    rgba(29, 67, 207, 1) 0%, rgba(91, 237, 83, 1) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 25px;
+}
+
+.bandeirat{
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow:
+        0 4px 10px rgba(0,0,0,0.3);
+}
+
+.x{
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    margin: 0 18px;
+    position: relative;
+    bottom: 25px;
+}
+
+.time{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.panama,
+.brasil,
+.egito,
+.marroco{
+    width: 120px;
+    text-align: center;
+}
+
+.info-jogo{
+    display: flex;
+    justify-content: space-between;
+    background: rgba(0,0,0,0.15);
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    backdrop-filter: blur(5px);
+    gap: 10px;
+    color: white;
+}
+
+footer{
+    background-color: white;
+    border-radius: 15px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.15)
+
+}
+.patrocinadores{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    flex-wrap: wrap;
+}
+
+.patro{
+    width: 90px;
+    transition: 0.3s;
+}
+
+.patro:hover{
+    transform: scale(1.08);
+}
+
+.cbf-footer{
+    width: 90px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
