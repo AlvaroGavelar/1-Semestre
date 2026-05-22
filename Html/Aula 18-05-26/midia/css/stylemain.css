@@ -1,5 +1,9 @@
 @import url("reset.css");
 
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     background: linear-gradient(
     90deg,
@@ -18,6 +22,8 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.65);
 }
 
 h1{
@@ -52,7 +58,7 @@ h1{
     gap: 30px;
     position: relative;
     box-shadow:
-        0 8px 20px rgba(0,0,0,0.25);
+        0 8px 20px rgba(0,0,0,0.65);
 }
 
 .navbar a{
@@ -79,6 +85,7 @@ h1{
     gap: 60px;
     padding: 50px;
     text-align: center;
+
 }
 
 
@@ -124,6 +131,8 @@ h2{
     padding-top: 20px;
     padding-bottom: 20px;
     transition: 0.3s;
+    box-shadow:
+        0 8px 20px rgba(0,0,0,0.45);
 }
 
 .noticia1:hover{
@@ -144,10 +153,13 @@ h2{
     margin-right: 5px;
 }
 
+a{
+    text-decoration: none;
+}
+
 .jogo{
     width: 340px;
     padding: 20px;
-
     background: linear-gradient(
         95deg,
         rgba(29, 67, 207, 1) 0%, rgba(91, 237, 83, 1) 100%);
@@ -157,7 +169,7 @@ h2{
     align-items: center;
     gap: 12px;
     box-shadow:
-        0 10px 25px rgba(0,0,0,0.35);
+        0 8px 20px rgba(0,0,0,0.45);
     transition: 0.3s;
 }
 
@@ -234,7 +246,7 @@ footer{
     justify-content: center;
     padding: 20px;
     box-shadow:
-        0 8px 20px rgba(0,0,0,0.15)
+        0 8px 20px rgba(0,0,0,0.45)
 
 }
 .patrocinadores{
