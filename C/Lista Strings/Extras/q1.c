@@ -1,121 +1,147 @@
-/*Cadastro e busca de alunos
-Crie um programa que cadastre até 10 alunos.
-
-Para cada aluno:
-
-nome OK
-nota 1 OK 
-nota 2 OK
-
-Depois o programa deve:
-calcular média de cada aluno OK
-mostrar o aluno com maior média OK
-permitir buscar um aluno pelo nome OK
-informar se foi aprovado (média >= 60)*/
-
 #include <stdio.h>
 #include <string.h>
-#define QUANTIDADE_ALUNOS 10
 
-void cadastro(char nome[QUANTIDADE_ALUNOS][50], int *qtd, char novoNome[]){
+#define QUANTIDADE_ALUNOS 3
+
+// Limpa o '\n' que o fgets deixa no final do texto
+void removeNewline(char string[]) {
+    string[strcspn(string, "\n")] = '\0';
+}
+
+// Limpa o buffer do teclado para o próximo fgets não bugar
+void limparBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+void cadastrarAlunoCompleto(char nome[QUANTIDADE_ALUNOS][50], float nota1[], float nota2[], int *qtd, char novoNome[]) {
     int i, achou = 0;
 
-    for(i=0;i<*qtd;i++){
-        
-        //Verificar se ja existe
-        if(strcmp(nome[i], novoNome) == 0){
-            printf("\nAluno já Cadastrado!!\n");
-            achou = 1; //Já Cadastrado
-        }
+    // Impede o cadastro de nomes vazios (caso o buffer falhe)
+    if (strlen(novoNome) == 0) {
+        printf("\nErro: Nome inválido!\n\n");
+        return;
+    }
 
-
-       if(achou == 0){
-            if(*qtd < QUANTIDADE_ALUNOS){
-                strcpy(nome[*qtd],novoNome);
-                (*qtd)++;
-                printf("\nAluno Cadastrado com Sucesso!!\n");
-            }
-            else
-                printf("\nLimite de Alunos Atingido\n");
+    // Verificar se o aluno já existe
+    for (i = 0; i < *qtd; i++) {
+        if (strcmp(nome[i], novoNome) == 0) {
+            printf("\nAluno já Cadastrado!!\n\n");
+            achou = 1;
+            break;
         }
     }
-}   
 
-    void lerNotas(char nome[][50], float nota1[], float nota2[], int qtd){
-        int i;
-
-        for(i=0;i<qtd;i++){
-
-            printf("\n ALuno: %s", nome[i]);
-            printf("\nForneça a Primeira Nota:");
-            scanf("%df", &nota1[i]);
-                while(nota1[i] < 0){ 
-                    printf("\nNota invalida! Digite novamente: ");
-                    scanf("%f", &nota1[i]);
-                }
+    if (achou == 0) {
+        if (*qtd < QUANTIDADE_ALUNOS) {
+            strcpy(nome[*qtd], novoNome);
             
-            printf("\nForneça a Segunda Nota:");
-            scanf("%f", &nota2[i]);
-                while(nota2[i]<0){
-                    printf("\nNota invalida! Digite novamente: ");
-                    scanf("%f", &nota2[i]);
-                }
+            printf("Aluno: %s\n", nome[*qtd]);
+            printf("Forneça a Primeira Nota: ");
+            scanf("%f", &nota1[*qtd]); 
+            while (nota1[*qtd] < 0) { 
+                printf("Nota inválida! Digite novamente: ");
+                scanf("%f", &nota1[*qtd]);
             }
-        }
-
-    void media(char nome[QUANTIDADE_ALUNOS][50], float nota1[], float nota2[], int qtd){
-        int i, indiceMaior = 0;
-        float media = 0,
-              maiorMedia = 0;
-
-        for(i=0; i < qtd; i++){
-            media = (nota1[i] + nota2[i])/2;
-            printf("\nAluno: %s", nome[i]);
-            printf("\nMedia: %.2f\n", media);
             
-            //Ver se é a maior media
-            if(media > maiorMedia){
-                maiorMedia = media;
-                indiceMaior = i;
+            printf("Forneça a Segunda Nota: ");
+            scanf("%f", &nota2[*qtd]);
+            while (nota2[*qtd] < 0) {
+                printf("Nota inválida! Digite novamente: ");
+                scanf("%f", &nota2[*qtd]);
             }
-        }
 
+            // ESSA LINHA RESOLVE O BUG: Remove o Enter deixado pelo scanf
+            limparBuffer(); 
+
+            (*qtd)++;
+            printf("\nAluno Cadastrado com Sucesso!!\n\n");
+        } else {
+            printf("\nLimite de Alunos Atingido\n");
+        }
+    }
+}
+
+void exibirMediasETop(char nome[QUANTIDADE_ALUNOS][50], float nota1[], float nota2[], int qtd) {
+    int i, indiceMaior = 0;
+    float mediaAluno = 0, maiorMedia = -1; 
+
+    printf("--- RELATÓRIO DE MÉDIAS ---\n");
+    for (i = 0; i < qtd; i++) {
+        mediaAluno = (nota1[i] + nota2[i]) / 2;
+        printf("\nAluno: %s", nome[i]);
+        printf("\nMédia: %.2f", mediaAluno);
+
+        if (mediaAluno >= 60) {
+            printf("\nSituação: Aprovado!!\n");
+        } else {
+            printf("\nSituação: Reprovado!!\n");
+        }
+        
+        if (mediaAluno > maiorMedia) {
+            maiorMedia = mediaAluno;
+            indiceMaior = i;
+        }
+    }
+
+    if (qtd > 0) {
         printf("\n===== MELHOR ALUNO =====\n");
         printf("Aluno: %s\n", nome[indiceMaior]);
-        printf("Maior media: %.2f\n", maiorMedia);
+        printf("Maior média: %.2f\n", maiorMedia);
     }
+}
 
-    void mostrarNotas(float nota1[], float nota2[], int qtd){
-        int i;
+void mostrarNotasAluno(float nota1[], float nota2[], int indice) {
+    printf("Nota 1: %.2f\n", nota1[indice]);
+    printf("Nota 2: %.2f\n", nota2[indice]);
+}
 
-        for(i = 0; i < qtd; i++){
-
-            printf("\nNota 1: %.2f", nota1[i]);
-            printf("\nNota 2: %.2f\n", nota2[i]);
-
+void buscaNome(char nome[QUANTIDADE_ALUNOS][50], int qtd, char compararaNome[50], float nota1[], float nota2[]) {
+    int i, achou = 0;
+    
+    for (i = 0; i < qtd; i++) {
+        if (strcmp(nome[i], compararaNome) == 0) {
+            printf("\n===== ALUNO ENCONTRADO =====\n");
+            printf("Aluno: %s\n", nome[i]);
+            mostrarNotasAluno(nota1, nota2, i); 
+            achou = 1;
+            break; 
         }
     }
+    
+    if (!achou) {
+        printf("\nAluno não Encontrado!!\n");
+    }
+}
 
-    void buscaNome(char nome[QUANTIDADE_ALUNOS][50], int qtd, char compararaNome[50],
-    float nota1[], float nota2[]){
-        int i, achou = 0;
+int main() {
+    char nome[QUANTIDADE_ALUNOS][50];
+    char novoNome[50];
+    char busca[50];
+    int qtd = 0, i;
+    float nota1[QUANTIDADE_ALUNOS];
+    float nota2[QUANTIDADE_ALUNOS];
+
+    printf("--- CADASTRO DE ALUNOS E NOTAS ---\n");
+    
+    // Altere o "3" para 10 se quiser testar com a capacidade cheia
+    while(qtd < QUANTIDADE_ALUNOS){
+        printf("Forneça o Nome: ");
+        fgets(novoNome, 50, stdin);
+        removeNewline(novoNome); 
+    
+        cadastrarAlunoCompleto(nome, nota1, nota2, &qtd, novoNome);
+    } 
+
+    if (qtd > 0) {
+        exibirMediasETop(nome, nota1, nota2, qtd);
+
+        printf("\nDigite o nome para busca: ");
+        fgets(busca, 50, stdin);
+        removeNewline(busca);
         
-        for(i=0; i < qtd; i++){
-            if(strcmp(nome[i],compararaNome) == 0){
-                printf("\n===== ALUNO ENCONTRADO =====\n");
-                printf("Aluno: %s\n", nome[i]);
-                mostrarNotas(nota1, nota2, qtd);
-            }
-            else
-            printf("\nAluno não Encontrado!!\n");
-        }
+        buscaNome(nome, qtd, busca, nota1, nota2);
     }
 
-    int aprovacao(char nome[QUANTIDADE_ALUNOS][50],float nota1[], float nota2[], int qtd){
-        int i;
-
-        for(i=0, i < qtd; i++){
-            if()
-        }
-
-    }
+    return 0;
+}
