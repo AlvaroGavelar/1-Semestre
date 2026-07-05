@@ -24,11 +24,20 @@ int main(){
     contador = 4;
     do{
 
-        printf("\nForneca uma Linha:");
-        scanf("%d", &linha);
+        do{
+            erro = 0;
 
-        printf("Forneca uma coluna:");
-        scanf("%d", &coluna);
+            printf("\nForneca uma Linha:");
+            scanf("%d", &linha);
+
+            printf("Forneca uma coluna:");
+            scanf("%d", &coluna);
+
+            if(linha < 0 || linha > 5 || coluna < 0 || coluna > 5){
+                erro = 1;
+                printf("\nPosicao invalida!\n");
+            }
+        }while(erro != 0);
 
         if(m[linha][coluna] == 5){
             printf("\nFogo! Navio destruído!\n");
@@ -43,7 +52,7 @@ int main(){
                 }
             }
             for(col = 0; col < 6; col++){
-                if(m[coluna][lin] == 5){
+                if(m[linha][col] == 5){
                     radar++;
                 }
             }
