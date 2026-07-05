@@ -1,6 +1,6 @@
     /*
-    Faça um programa que leia uma matriz A LINHAxCOLUNA de inteiros e divide todos os COLUNA elementos de cada
-    uma das LINHA linhas de A pelo valor do maior elemento em módulo daquela linha. Escrever a matriz A
+    Faça um programa que leia uma matriz A 12x13 de inteiros e divide todos os 13 elementos de cada
+    uma das 12 linhas de A pelo valor do maior elemento em módulo daquela linha. Escrever a matriz A
     lida e a matriz A modificada.
     */
 
