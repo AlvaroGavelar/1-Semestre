@@ -5,8 +5,8 @@
     */
 
     #include <stdio.h>
-    #define COLUNA 3
-    #define LINHA 2
+    #define COLUNA 13
+    #define LINHA 12
 
 
     int main(){
